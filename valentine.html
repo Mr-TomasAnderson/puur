@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        button {
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        #yesBtn {
+            background: #ff4d6d;
+            color: white;
+            margin-right: 20px;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.05);
+        }
+
+        #noBtn {
+            position: absolute;
+            background: #ffffff;
+            color: #ff4d6d;
+        }
+
+        .result {
+            display: none;
+            text-align: center;
+        }
+
+        .result img {
+            max-width: 300px;
+            width: 80%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .result h2 {
+            color: white;
+            margin-top: 20px;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="question">
+    <h1>Sweety, will you be my Valentine? 💕</h1>
+    <button id="yesBtn">Yes 💖</button>
+    <button id="noBtn">No 🙈</button>
+</div>
+
+<div class="result" id="result">
+    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Love">
+    <h2>I knew it 😘💘</h2>
+</div>
+
+<script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const question = document.getElementById('question');
+    const result = document.getElementById('result');
+
+    function moveNoButton() {
+        const padding = 20;
+        const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+        const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+    }
+
+    // Для мыши
+    noBtn.addEventListener('mouseenter', moveNoButton);
+
+    // Для телефона
+    noBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        moveNoButton();
+    });
+
+    yesBtn.addEventListener('click', () => {
+        question.style.display = 'none';
+        result.style.display = 'block';
+    });
+
+    // начальная позиция кнопки No
+    moveNoButton();
+</script>
+
+</body>
+</html>
